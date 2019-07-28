@@ -1,0 +1,45 @@
+{% extends 'shared/base.html' %}
+{% block title %}{{ board.title }}{% endblock%}
+{% block style %}
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <center>
+        <div style="width: 80%;">
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-1@l">
+                {% if board %}
+                    <h1 class="uk-card-title">{{ board.title }}</h1>
+                    <p>{{ board.content }}</p>
+                {% else %}
+                    <p>Empty....</p>
+                {% endif %}
+            </div>
+{#            <br>#}
+{#            <div class="uk-card uk-card-default uk-card-body">#}
+{#                <h1 class="uk-card-title">Comments({{ board.comments.count }})</h1>#}
+{#                <ul class="uk-comment-list">#}
+{#                    {% for comment in board.comments.all %}#}
+{#                        <li>#}
+{#                            <article class="uk-comment-primary">#}
+{#                                {{ comment.content }}#}
+{#                            </article>#}
+{#                        </li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
+{#            <form action="/app/board/{{ board.id }}/comment/new" method="post">#}
+{#                {% csrf_token %}#}
+{#                {{ form.as_p }}#}
+{#                <input type="submit" value="댓글">#}
+{#            </form>#}
+            <div>
+                {% load disqus_tags %}
+                {% disqus_show_comments %}
+            </div>
+        </div>
+    </center>
+{% endblock %}

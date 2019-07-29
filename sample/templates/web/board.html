@@ -1,0 +1,40 @@
+{% extends 'shareTemplate/base.html' %}
+{% block title %}Board{% endblock %}
+{% block body %}
+    <div class="uk-card uk-card-default uk-card-body uk-width-2-2@m">
+        <h3 class="uk-card-title">게시물</h3>
+        {% if Board %}
+            <a href="/web/board/{{ Board.id }}/update">게시글 수정</a>
+            <div class="uk-card uk-card-default uk-card-body uk-card-hover">
+                <h3 class="uk-card-title">{{ Board.title }}</h3>
+                <p>{{ Board.content }}</p><strong class="uk-float-right">작성자: {{ Board.user.userId }}</strong>
+            </div>
+            <br>
+{#            <div class="uk-card uk-card-default uk-card-body uk-card-hover">#}
+{#                <h3 class="uk-card-title">Comment ({{ Board.comments.count }})</h3>#}
+{#                <ul class="uk-comment-list">#}
+{#                    <li>#}
+{#                        {% for comment in Board.comments.all %}#}
+{#                            <article class="uk-comment uk-comment-primary">{{ comment.content }}</article>#}
+{#                        {% endfor %}#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#            <br>#}
+{#            <div class="uk-card uk-card-default uk-card-body uk-card-hover">#}
+{#                <h3 class="uk-card-title">댓글 쓰기</h3>#}
+{#                <form action="/web/board/{{ Board.id }}/comment/new" method="post">#}
+{#                    {% csrf_token %}#}
+{#                    {{ form.as_p }}#}
+{#                    <input class="uk-button uk-button-primary" type="submit" value="작성">#}
+{#                </form>#}
+{#            </div>#}
+            <div>
+            {% load disqus_tags %}
+            {% disqus_show_comments %}
+            </div>
+        {% else %}
+            <p>That's not empty.</p>
+        {% endif %}
+    </div>
+{% endblock %}

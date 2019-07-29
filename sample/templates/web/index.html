@@ -1,0 +1,39 @@
+{% extends 'shareTemplate/base.html' %}
+{% block title %}Index{% endblock %}
+{% block body %}
+    <div class="uk-card uk-card-default uk-card-body uk-width-2-2@m">
+        <h3 class="uk-card-title">게시판</h3>
+        <div class="uk-card uk-card-default uk-card-body uk-card-hover">
+            <table class="uk-table uk-table-striped">
+                <caption>게시판 입니다.</caption>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>제목</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if BoardList %}
+                    {% for Board in BoardList %}
+                        <tr>
+                            <td> {{ forloop.counter }} </td>
+                            <td><a href="/web/board/{{ Board.id }}">{{ Board.title }}</a>
+                            <td><a href="/web/board/{{ Board.id }}/delete">삭제</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <p>There is empty.</p>
+                {% endif %}
+                </tbody>
+            </table>
+            <div class="uk-button-group">
+                <form action="/web/search/" method="POST">
+                    <input type="text" class="uk-search-input">
+                    <button class="uk-button uk-button-primary">Search</button>
+                </form>
+            </div>
+            <a class="uk-align-right" href="/web/board/create">새로 추가하기</a>
+        </div>
+    </div>
+{% endblock %}

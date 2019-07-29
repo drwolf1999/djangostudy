@@ -18,28 +18,28 @@
                     <p>Empty....</p>
                 {% endif %}
             </div>
-{#            <br>#}
-{#            <div class="uk-card uk-card-default uk-card-body">#}
-{#                <h1 class="uk-card-title">Comments({{ board.comments.count }})</h1>#}
-{#                <ul class="uk-comment-list">#}
-{#                    {% for comment in board.comments.all %}#}
-{#                        <li>#}
-{#                            <article class="uk-comment-primary">#}
-{#                                {{ comment.content }}#}
-{#                            </article>#}
-{#                        </li>#}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#            </div>#}
-{#            <form action="/app/board/{{ board.id }}/comment/new" method="post">#}
-{#                {% csrf_token %}#}
-{#                {{ form.as_p }}#}
-{#                <input type="submit" value="댓글">#}
-{#            </form>#}
-            <div>
-                {% load disqus_tags %}
-                {% disqus_show_comments %}
+            <br>
+            <div class="uk-card uk-card-default uk-card-body">
+                <h1 class="uk-card-title">Comments({{ board.comments.count }})</h1>
+                <ul class="uk-comment-list">
+                    {% for comment in board.comments.all %}
+                        <li>
+                            <article class="uk-comment-primary">
+                                {{ comment.content }}
+                            </article>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
+            <form action="/app/board/{{ board.id }}/comment/new" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="댓글">
+            </form>
+{#            <div>#}
+{#                {% load disqus_tags %}#}
+{#                {% disqus_show_comments %}#}
+{#            </div>#}
         </div>
     </center>
 {% endblock %}

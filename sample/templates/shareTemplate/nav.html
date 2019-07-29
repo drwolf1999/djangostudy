@@ -1,0 +1,55 @@
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="/web"><img style="width: 80px; height: 40px;"
+                                                           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiYYzBJxrC4dJevxgXtNSvPrd9fZ-817vtWJLOP9cNu0E23HXB"></a>
+        <ul class="uk-navbar-nav">
+            {#            <li class="uk-active"><a href="#">Active</a></li>#}
+            <li>
+                <a href="#">게시판</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        {#                        <li><a href="/notice">공지사항</a></li>#}
+                        <li><a href="/web">게시판</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">여기저기</a></li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <div class="uk-navbar-item uk-float-right">
+            {#            <form action="javascript:void(0)">#}
+            {#                <input class="uk-input uk-form-width-small" type="text" placeholder="Search...">#}
+            {#                <button class="uk-button" uk-icon="icon: search"></button>#}
+            {#            </form>#}
+            {% if request.session.userId %}
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">{{ request.session.userId }}</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="#">{{ request.session.userId }}</a></li>
+                                <li><a href="/account/logout">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            {% else %}
+                {{ request.session.userId }}
+                <ul class="uk-navbar-nav">
+                    {#            <li class="uk-active"><a href="#">Active</a></li>#}
+                    <li>
+                        <a href="#">로그인</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="/account/login">로그인</a></li>
+                                <li><a href="/account/register">회원가입</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>

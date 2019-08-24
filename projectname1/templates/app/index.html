@@ -5,6 +5,7 @@
 </style>
 {% endblock %}
 {% block body %}
+    {{ request.session.userId }}
     <div style="width: 85%; text-align: right;">
         <a href="/app/new">새로운 게시물 추가</a>
     </div>

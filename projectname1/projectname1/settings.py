@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'app',
     'disqus',
     'django.contrib.sites',
+    'account',
 ]
 
 DISQUS_WEBSITE_SHORTNAME = 'projectname1'

@@ -13,7 +13,7 @@
     <center>
         <div style="width: 70%;">
             <table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
-                <thead><td>#<td>제목<td></td></thead>
+                <thead><tr>#<tr>제목<tr></tr></thead>
                 <tbody>
                     {% for board in boardList %}
                         <tr><td>{{ forloop.counter }}<td><a href="/app/board/{{ board.id }}">{{ board.title }}</a><td><a href="/app/board/{{ board.id }}/delete">삭제</a></td></tr>

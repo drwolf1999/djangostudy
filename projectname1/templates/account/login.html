@@ -1,8 +1,0 @@
-{% if error %}
-    <script>alert('에러가 발생했어요..');</script>
-{% endif %}
-<form action="/account/login" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="로그인">
-</form>
